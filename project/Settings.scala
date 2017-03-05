@@ -6,7 +6,7 @@ import sbt._
   */
 object Settings {
   /** The name of your application */
-  val name = "scalajs-spa"
+  val name = "spring-scalajs-spa"
 
   /** The version of your application */
   val version = "1.1.4"
@@ -22,9 +22,9 @@ object Settings {
     * These dependencies are shared between JS and JVM projects
     * the special %%% function selects the correct version for each project
     */
-  val sharedDependencies = Def.setting(Seq(
+  val sharedDependencies = Seq(
     //"com.lihaoyi" %%% "autowire" % Versions.autowire
-  ))
+  )
 
   /** Dependencies only used by the JVM project */
   val jvmDependencies = Seq(

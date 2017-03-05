@@ -1,3 +1,4 @@
+import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 import sbt._
 
 /**
@@ -22,22 +23,27 @@ object Settings {
     * These dependencies are shared between JS and JVM projects
     * the special %%% function selects the correct version for each project
     */
-  val sharedDependencies = Seq(
+  val sharedDependencies = Def.setting(Seq(
     //"com.lihaoyi" %%% "autowire" % Versions.autowire
-  )
+  ))
 
   /** Dependencies only used by the JVM project */
-  val jvmDependencies = Seq(
+  val jvmDependencies = Def.setting(Seq(
     "org.springframework.boot" % "spring-boot-starter-web" % Versions.springBoot
-  )
+  ))
 
   /** Dependencies only used by the JS project (note the use of %%% instead of %%) */
-  val scalajsDependencies = Seq(
-    //    "com.github.japgolly.scalajs-react" %%% "core" % versions.scalajsReact,
-  )
+  val scalajsDependencies = Def.setting(Seq(
+    "com.github.japgolly.scalajs-react" %%% "core" % Versions.scalajsReact,
+    "com.github.japgolly.scalajs-react" %%% "extra" % Versions.scalajsReact,
+    "me.chrons" %%% "diode" % Versions.diode,
+    "me.chrons" %%% "diode-react" % Versions.diode,
+    "org.scala-js" %%% "scalajs-dom" % Versions.scalaDom
+  ))
 
   /** Dependencies for external JS libs that are bundled into a single .js file according to dependency order */
-  val jsDependencies = Seq(
-    //    "org.webjars.bower" % "react" % versions.react / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
-  )
+  val jsDependencies = Def.setting(Seq(
+    "org.webjars.bower" % "react" % Versions.react / "react-with-addons.js" minified "react-with-addons.min.js" commonJSName "React",
+    "org.webjars.bower" % "react" % Versions.react / "react-dom.js" minified "react-dom.min.js" dependsOn "react-with-addons.js" commonJSName "ReactDOM"
+  ))
 }

@@ -8,6 +8,6 @@ class HelloEveryone {
 
   @RequestMapping(Array("/hi"))
   @ResponseBody
-  def home = "Hello World!"
+  def home = "Hello World !!"
 
 }

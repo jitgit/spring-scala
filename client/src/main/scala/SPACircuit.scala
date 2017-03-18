@@ -1,6 +1,7 @@
 import diode.Circuit
 import diode.data.{Empty, Pot}
 import diode.react.ReactConnector
+import modules.hello.{HelloActionHandler, HelloModel}
 
 // Application circuit
 object SPACircuit extends Circuit[RootModel] with ReactConnector[RootModel] {
@@ -8,11 +9,10 @@ object SPACircuit extends Circuit[RootModel] with ReactConnector[RootModel] {
   override protected def initialModel = RootModel(Empty)
 
   // combine all handlers into one
-  override protected val actionHandler = composeHandlers(
-    //    new TodoHandler(zoomRW(_.todos)((m, v) => m.copy(todos = v))),
-    //    new MotdHandler(zoomRW(_.motd)((m, v) => m.copy(motd = v)))
+  override protected val actionHandler: SPACircuit.HandlerFunction = composeHandlers(
+    new HelloActionHandler(zoomRW(_.helloModel)((m, v) => m.copy(helloModel = v)))
   )
 }
 
 // The base model of our application
-case class RootModel(message: Pot[String])
+case class RootModel(helloModel: Pot[HelloModel])

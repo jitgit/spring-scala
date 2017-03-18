@@ -1,7 +1,7 @@
 import japgolly.scalajs.react.ReactDOM
 import japgolly.scalajs.react.extra.router._
 import japgolly.scalajs.react.vdom.prefix_<^._
-import modules.HelloReact
+import modules.hello.HelloModule
 import org.scalajs.dom
 
 import scala.scalajs.js
@@ -21,13 +21,13 @@ object SPAMain extends js.JSApp {
   // configure the router
   val routerConfig = RouterConfigDsl[Loc].buildConfig { dsl =>
     import dsl._
-    val todoWrapper = SPACircuit.connect(_.message)
+    val todoWrapper = SPACircuit.connect(_.helloModel)
     // wrap/connect components to the circuit
-    (staticRoute(root, HomeLoc) ~> renderR(ctl => todoWrapper(HelloReact(_))))
+    (staticRoute(root, HomeLoc) ~> renderR(ctl => todoWrapper(HelloModule(_))))
       .notFound(redirectToPage(HomeLoc)(Redirect.Replace))
   }.renderWith(layout)
 
-  val todoCountWrapper = SPACircuit.connect(_.message.toOption)
+  //val todoCountWrapper = SPACircuit.connect(_.helloModel)
 
   // base layout for all pages
   def layout(c: RouterCtl[Loc], r: Resolution[Loc]) = {

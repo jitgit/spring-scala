@@ -29,7 +29,8 @@ object Settings {
 
   /** Dependencies only used by the JVM project */
   val jvmDependencies = Def.setting(Seq(
-    "org.springframework.boot" % "spring-boot-starter-web" % Versions.springBoot
+    "org.springframework.boot" % "spring-boot-starter-web" % Versions.springBoot,
+    "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
   ))
 
   /** Dependencies only used by the JS project (note the use of %%% instead of %%) */

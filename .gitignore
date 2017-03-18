@@ -10,3 +10,5 @@ project/plugins/project/
 .idea_modules/
 
 *.log
+
+bash.exe.stackdump

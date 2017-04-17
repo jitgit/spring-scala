@@ -29,8 +29,10 @@ object Settings {
 
   /** Dependencies only used by the JVM project */
   val jvmDependencies = Def.setting(Seq(
-    "org.springframework.boot" % "spring-boot-starter-web" % Versions.springBoot,
-    "org.scala-lang.modules" %% "scala-xml" % "1.0.6"
+    "org.springframework.boot" % "spring-boot-starter-web" % Versions.springBoot
+    , "com.fasterxml.jackson.module" % "jackson-module-scala_2.12" % Versions.jacksonModuleScala
+    , "com.fasterxml.jackson.core" % "jackson-databind" % Versions.jacksonModuleScala
+    //,"org.scala-lang.modules" %% "scala-xml" % "1.0.6"
   ))
 
   /** Dependencies only used by the JS project (note the use of %%% instead of %%) */
@@ -39,7 +41,8 @@ object Settings {
     "com.github.japgolly.scalajs-react" %%% "extra" % Versions.scalajsReact,
     "me.chrons" %%% "diode" % Versions.diode,
     "me.chrons" %%% "diode-react" % Versions.diode,
-    "org.scala-js" %%% "scalajs-dom" % Versions.scalaDom
+    "org.scala-js" %%% "scalajs-dom" % Versions.scalaDom,
+    "com.lihaoyi" %%% "upickle" % Versions.upickle
   ))
 
   /** Dependencies for external JS libs that are bundled into a single .js file according to dependency order */

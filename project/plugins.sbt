@@ -8,6 +8,7 @@ addSbtPlugin("io.spray" % "sbt-revolver" % "0.8.0") // Starting (~re-start) and 
 
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.14")
 
+addSbtPlugin("com.typesafe.sbt" % "sbt-less" % "1.1.0")
 
 logLevel := sbt.Level.Debug
 

@@ -4,7 +4,7 @@ import diode.data.Pot
 import diode.react._
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.prefix_<^._
-import modules.hello.HelloActions.{FetchMessage, GetMessage}
+import modules.hello.HelloActions.FetchMessage
 
 import scala.scalajs.js.timers._
 
@@ -25,7 +25,7 @@ object HelloModule {
 
     def render(props: Props, s: State) = {
       println(s"props ${props.model.isReady}")
-      val message = props.model.map(hm => hm.message).getOrElse("Not Ready")
+      val message = props.model.map(hm => s"${hm.hello.to} at ${hm.hello.time}").getOrElse("Not Ready")
       <.div(<.div(message), <.button(^.onClick --> onButtonClick(props), "Click Me!!"))
     }
   }

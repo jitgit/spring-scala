@@ -11,7 +11,7 @@ val commonSettings = Seq(
 )
 
 scalaVersion := Versions.scalaVersion
-scalacOptions in ThisBuild ++= Seq("-deprecation", "-feature", "-unchecked")
+scalacOptions in ThisBuild ++= Seq("-deprecation", "-feature", "-unchecked", "-Ylog-classpath")
 
 lazy val client = (project in file("client")).settings(
   commonSettings,
@@ -33,6 +33,7 @@ lazy val server = (project in file("server")).settings(
   name := "SERVER",
   pipelineStages in Assets := Seq(scalaJSPipeline),
   scalaJSProjects := Seq(client),
+  scalacOptions := Seq("-Ylog-classpath", "verbose"),
   WebKeys.packagePrefix in Assets := "public/"
 ).enablePlugins(SbtWeb /*, JavaAppPackaging*/).dependsOn(sharedJvm)
 

@@ -7,6 +7,7 @@ object Versions extends WebJarsVersions with ScalaJSVersions with SharedVersions
 
 trait ScalaJVMVersions {
   val springBoot = "1.5.1.RELEASE"
+  val jacksonModuleScala = "2.8.8"
 }
 
 trait ScalaJSVersions {
@@ -24,7 +25,7 @@ trait ScalaJSVersions {
 
 //versions for libs that are shared between client and server
 trait SharedVersions {
-  val upickle = "0.4.1"
+  val upickle = "0.4.4"
   val autowire = "0.2.5"
   val booPickle = "1.2.4"
   val scalaTest = "3.0.0"
